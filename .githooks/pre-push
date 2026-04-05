@@ -1,0 +1,17 @@
+#!/bin/sh
+set -eu
+
+repo_root=$(git rev-parse --show-toplevel)
+cd "$repo_root"
+
+if ! command -v npm >/dev/null 2>&1; then
+  echo "npm is required to run the OXP validation hook."
+  exit 1
+fi
+
+if [ ! -d node_modules ]; then
+  echo "Dependencies are not installed. Run 'npm install' in omniflows-protocol first."
+  exit 1
+fi
+
+npm run validate:oxp

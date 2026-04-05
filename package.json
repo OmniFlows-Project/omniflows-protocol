@@ -1,0 +1,11 @@
+{
+  "name": "omniflows-protocol",
+  "private": true,
+  "scripts": {
+    "validate:oxp": "node scripts/validate-oxp.mjs"
+  },
+  "devDependencies": {
+    "ajv": "^8.17.1",
+    "ajv-formats": "^3.0.1"
+  }
+}
