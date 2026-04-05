@@ -1,0 +1,63 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "OmniFlows Exchange Protocol (OXP)",
+  "description": "A standardized schema for capturing and linking fragmented AI conversations into a knowledge tree.",
+  "type": "object",
+  "required": ["protocol_version", "id", "timestamp", "source", "graph", "payload"],
+  "properties": {
+    "protocol_version": { "type": "string", "const": "0.1.0" },
+    "id": { "type": "string", "description": "Unique identifier for this flow node (UUID)." },
+    "timestamp": { "type": "string", "format": "date-time" },
+    "identity": {
+      "type": "object",
+      "properties": {
+        "user_alias": { "type": "string" },
+        "device_id": { "type": "string" }
+      }
+    },
+    "source": {
+      "type": "object",
+      "required": ["platform", "url"],
+      "properties": {
+        "platform": { "enum": ["chatgpt", "gemini", "grok", "web_browser", "other"] },
+        "url": { "type": "string", "format": "uri" },
+        "session_id": { "type": "string" }
+      }
+    },
+    "graph": {
+      "type": "object",
+      "required": ["parent_id", "relation"],
+      "properties": {
+        "parent_id": { "type": ["string", "null"], "description": "ID of the parent node. Null if it is a root node." },
+        "relation": { "enum": ["root", "follow_up", "cross_ref", "summary"] },
+        "depth": { "type": "integer", "minimum": 0 }
+      }
+    },
+    "payload": {
+      "type": "object",
+      "required": ["input", "output"],
+      "properties": {
+        "trigger": {
+          "type": "object",
+          "properties": {
+            "type": { "enum": ["selection", "auto", "manual"] },
+            "text": { "type": "string" },
+            "context_before": { "type": "string" }
+          }
+        },
+        "input": { "type": "string" },
+        "output": {
+          "type": "object",
+          "properties": {
+            "raw": { "type": "string" },
+            "content_type": { "type": "string", "default": "markdown" }
+          }
+        }
+      }
+    },
+    "tags": {
+      "type": "array",
+      "items": { "type": "string" }
+    }
+  }
+}

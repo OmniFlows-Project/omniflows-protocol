@@ -1,0 +1,25 @@
+{
+  "protocol_version": "0.1.0",
+  "id": "node_root_001",
+  "timestamp": "2026-04-05T22:30:00Z",
+  "source": {
+    "platform": "chatgpt",
+    "url": "https://chatgpt.com/c/chat_id_123"
+  },
+  "graph": {
+    "parent_id": null,
+    "relation": "root",
+    "depth": 0
+  },
+  "payload": {
+    "trigger": {
+      "type": "selection",
+      "text": "Rust ownership"
+    },
+    "input": "Explain Rust ownership in simple terms.",
+    "output": {
+      "raw": "Ownership is a set of rules that govern how a Rust program manages memory...",
+      "content_type": "markdown"
+    }
+  }
+}
