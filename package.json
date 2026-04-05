@@ -1,8 +1,37 @@
 {
-  "name": "omniflows-protocol",
-  "private": true,
+  "name": "@omniflows/protocol",
+  "version": "0.1.0",
+  "description": "The standardized data exchange protocol for the OmniFlows ecosystem.",
+  "main": "schemas/oxp-v0.1.schema.json",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/OmniFlows-Project/omniflows-protocol.git"
+  },
+  "keywords": [
+    "omniflows",
+    "ai",
+    "knowledge-graph",
+    "protocol",
+    "json-schema"
+  ],
+  "author": "dahui",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/OmniFlows-Project/omniflows-protocol/issues"
+  },
+  "homepage": "https://omniflows.net",
+  "files": [
+    "schemas/",
+    "spec/",
+    "examples/"
+  ],
+  "engines": {
+    "node": ">=18.0.0"
+  },
   "scripts": {
-    "validate:oxp": "node scripts/validate-oxp.mjs"
+    "validate:oxp": "node scripts/validate-oxp.mjs",
+    "test": "npm run validate:oxp",
+    "lint-schema": "node scripts/lint-schema.mjs"
   },
   "devDependencies": {
     "ajv": "^8.17.1",
